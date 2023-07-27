@@ -1,0 +1,59 @@
+
+.container {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 100vh; /* Set the container height to the full viewport height */
+  margin-top: -2rem; /* Move the container 2rem higher */
+}
+
+/* Set the width for the login details section and center it horizontally */
+.details {
+  width: 28rem;
+  margin: auto; /* Center the details section horizontally */
+  padding: 1rem; /* Added padding for better spacing */
+  border: 1px solid #e0e0e0;
+  border-radius: 0.7rem;
+}
+
+/* Style the form with a vertical layout and center it horizontally */
+form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements in one column */
+  align-items: center; /* Center form elements horizontally */
+}
+
+/* Style error messages in red */
+.error-list {
+  color: red;
+}
+
+/* Center the register section horizontally */
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the "Login as Admin" label and center it */
+.loginAdmin label {
+  text-align: center;
+  color: brown;
+  font-size: 24px; /* Increased font size */
+  margin-top: 0.5rem; /* Added some top margin for spacing */
+}
+
+/* Style the button to be bigger and center it */
+.button {
+  text-align: center; /* Center the button */
+  margin-top: 1rem; /* Added margin to create space from the details section */
+}
+
+.button button {
+  background-color: brown;
+  color: white; /* Added to ensure text is visible */
+  border: none; /* Removed button border */
+  border-radius: 0.3rem; /* Added some border radius for a smoother look */
+  padding: 1rem 2rem; /* Increased padding to make the button bigger */
+  cursor: pointer; /* Show pointer cursor on hover */
+}

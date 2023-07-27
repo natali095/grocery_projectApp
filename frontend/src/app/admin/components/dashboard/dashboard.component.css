@@ -1,0 +1,38 @@
+/* Common styles for the dashboard section */
+#dashboard {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    text-align: center;
+
+  }
+  
+  #dashboard h2 {
+    margin-bottom: 1rem;
+  }
+  
+  #dashboard .overview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  #dashboard .overview p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  #dashboard .overview p:first-child {
+    font-weight: bold;
+  }
+  
+  /* Additional styles for the links within the dashboard section */
+  #dashboard a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  #dashboard a:hover {
+    text-decoration: underline;
+  }
+  
