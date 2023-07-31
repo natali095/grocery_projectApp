@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class FoodService {
+  [x: string]: any;
 
   constructor(private http:HttpClient) { }
 

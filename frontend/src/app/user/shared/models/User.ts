@@ -6,3 +6,5 @@ export class User{
     token!:string;
     isAdmin!:boolean;
   }
+
+  

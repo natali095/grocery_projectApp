@@ -1,1 +1,75 @@
-<p>admin-users works!</p>
+<!-- <h1>Admin Users</h1> -->
+
+<div>
+    <h2>Existing Users</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUser(user)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="editingUser">
+        <h2>Edit User</h2>
+        <form (submit)="saveUserChanges()">
+          <mat-form-field>
+            <mat-label>Name:</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="editingUser.name" required>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input matInput type="email" name="email" [(ngModel)]="editingUser.email" required>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Address:</mat-label>
+            <input matInput type="text" name="address" [(ngModel)]="editingUser.address">
+          </mat-form-field>
+      
+          <button mat-raised-button color="primary" type="submit">Save Changes</button>
+          <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+      
+</div>
+  <h2>Add User</h2>
+  <form (submit)="addUser()">
+    <mat-form-field>
+      <mat-label>Name:</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="newUser.name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input matInput type="email" name="email" [(ngModel)]="newUser.email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+      <input matInput type="password" name="password" [(ngModel)]="newUser.password" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address:</mat-label>
+      <input matInput type="text" name="address" [(ngModel)]="newUser.address">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Add User</button>
+  </form>
+<!-- Table to display existing users -->
+

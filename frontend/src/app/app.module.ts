@@ -30,9 +30,12 @@ import { AuthInterceptor } from './user/auth/auth.interceptor';
 import { PaymentPageComponent } from './user/components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './user/components/particular/paypal-button/paypal-button.component';
 import { OrderTrackPageComponent } from './user/components/pages/order-track-page/order-track-page.component';
+import { UserService } from './user/services/user.service';
 import { AdminModule } from './admin/admin.module';
 import { AdminLoginPageComponent } from './admin/admin-login-page/admin-login-page.component'; // Import the AdminModule here
-
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,7 @@ import { AdminLoginPageComponent } from './admin/admin-login-page/admin-login-pa
     PaymentPageComponent,
     PaypalButtonComponent,
     OrderTrackPageComponent,
+
     // Remove AdminModule from declarations, it should not be listed here
   ],
   imports: [
@@ -66,6 +70,9 @@ import { AdminLoginPageComponent } from './admin/admin-login-page/admin-login-pa
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatInputModule, // Add MatInputModule to the imports array
+    MatButtonModule, // Add MatButtonModule to the imports array
+    MatFormFieldModule,
     // AdminModule, 
     // Include the AdminModule here in the imports array
     ToastrModule.forRoot({

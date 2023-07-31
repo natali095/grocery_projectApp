@@ -20,6 +20,8 @@ const routes: Routes = [
       { path: 'users/:id', component: AdminUsersComponent },
       { path: 'home', component: AdminHomeComponent },
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'users', component: AdminUsersComponent },
+      {path:'foods', component:AdminFoodsComponent}
     ],
   },
 ];

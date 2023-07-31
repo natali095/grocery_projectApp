@@ -8,6 +8,7 @@ import orderRouter from './routers/order.router';
 import foodRouter from './routers/food.router';
 import userRouter from './routers/user.router';
 import adminRouter from './routers/admin.router'; // Import the admin router
+import apiRouter from './routers/api'; // Import the api.ts router
 import { sample_admins } from './data';
 
 const app = express();
@@ -19,11 +20,11 @@ app.use(
     origin: ['http://localhost:4200'], // Add the admin portal origin if needed
   })
 );
-
 app.use('/api/foods', foodRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
-app.use('/api/admins', adminRouter); // Include the admin router
+app.use('/api/admins', adminRouter); // All routes in adminRouter will be mounted on /api/admins
+app.use('/api', apiRouter); 
 
 const port = 5000;
 

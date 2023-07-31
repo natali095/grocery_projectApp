@@ -5,7 +5,6 @@ import asyncHandler from 'express-async-handler';
 import { User, UserModel } from '../models/user.model';
 import { HTTP_BAD_REQUEST } from '../constant/http_status';
 import bcrypt from 'bcryptjs';
-
 const router = Router();
 
 router.get('/seed', asyncHandler(async (req, res) => {

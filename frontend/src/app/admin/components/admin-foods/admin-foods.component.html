@@ -1,1 +1,96 @@
-<p>admin-foods works!</p>
+<div>
+    <h2>Add Food</h2>
+    <form (submit)="addFood()">
+      <!-- Form fields for name, price, origins, and tags -->
+      <mat-form-field>
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" name="name" [(ngModel)]="newFood.name" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Price:</mat-label>
+        <input matInput type="number" name="price" [(ngModel)]="newFood.price" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Origins:</mat-label>
+        <input matInput type="text" name="origins" [(ngModel)]="newFood.origins" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Tags:</mat-label>
+        <input matInput type="text" name="tags" [(ngModel)]="newFood.tags" required>
+      </mat-form-field>
+  
+      <!-- Add other form fields for favorite, stars, imageUrl, and cookTime here -->
+  
+      <mat-form-field>
+        <mat-label>Image URL:</mat-label>
+        <input matInput type="text" name="imageUrl" [(ngModel)]="newFood.imageUrl" required>
+      </mat-form-field>
+  
+      
+  
+     
+  <mat-form-field>
+        
+       
+  <mat-label>Cook Time:</mat-label>
+        <input matInput type="text" name="cookTime" [(ngModel)]="newFood.cookTime" required>
+      
+  </mat-form-field>
+
+  
+      <button mat-raised-button color="primary" type="submit">Add Food</button>
+    </form>
+  
+</div>
+
+  <!-- Table to display existing foods -->
+ <!-- Table to display existing foods -->
+<div>
+    <h2>Existing Foods</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Origins</th>
+          <th>Tags</th>
+          <th>Favorite</th>
+          <th>Stars</th>
+          <th>Image</th>
+          <th>Cook Time</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of foods">
+          <td>{{ food.name }}</td>
+          <td>{{ food.price }}</td>
+          <td>
+            <div class="origins">
+              <span *ngFor="let origin of food.origins">{{ origin }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="tags">
+              <span *ngFor="let tag of food.tags">{{ tag }}</span>
+            </div>
+          </td>
+          <td>{{ food.favorite ? 'Yes' : 'No' }}</td>
+          <td>{{ food.stars }}</td>
+          <td>
+            <img [src]="food.imageUrl" [alt]="food.name" class="food-image">
+          </td>
+          <td>{{ food.cookTime }}</td>
+          <td>
+            <!-- Add other table cells for favorite, stars, imageUrl, and cookTime here -->
+            <button (click)="editFood(food)">Edit</button>
+            <button (click)="deleteFood(food)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

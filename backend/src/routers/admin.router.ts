@@ -1,11 +1,9 @@
-// admin.router.ts
-
 import { Router } from 'express';
 import { sample_admins } from '../data';
 import jwt from 'jsonwebtoken';
-
-export const HTTP_BAD_REQUEST = 400;
-export const HTTP_UNAUTHORIZED = 401;
+import asyncHandler from 'express-async-handler';
+import { HTTP_BAD_REQUEST } from '../constant/http_status';
+import { User, UserModel } from '../models/user.model';
 
 const router = Router();
 
@@ -49,5 +47,41 @@ const generateTokenResponse = (admin: {
     token,
   };
 };
+
+router.get('/', asyncHandler(async (req, res, next) => {
+  const users = await UserModel.find({});
+  res.send(users);
+  return;
+}));
+
+router.post('/', asyncHandler(async (req, res, next) => {
+  const user = new UserModel(req.body);
+  await user.save();
+  res.send(user);
+  return;
+}));
+
+
+router.put('/update/:id', asyncHandler(async (req, res, next) => {
+  const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  if (!user) {
+    res.status(HTTP_BAD_REQUEST).send("No user with that ID found");
+    return;
+  }
+  res.send(user);
+  return;
+}));
+
+router.delete('/delete/:id', asyncHandler(async (req, res, next) => {
+  const user = await UserModel.findByIdAndDelete(req.params.id);
+  if (!user) {
+    res.status(HTTP_BAD_REQUEST).send("No user with that ID found");
+    return;
+  }
+  res.send(user);
+  return;
+}));
+
+
 
 export default router;
