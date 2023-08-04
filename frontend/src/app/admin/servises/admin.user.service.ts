@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { ADMIN_USERS_URL, ADMIN_USER_DELETE_URL } from '../../user/shared/constants/urls';
 
-const USER_GET_URL = 'http://localhost:5000/api/users'; // specify your actual endpoint here
+const USER_GET_URL = 'http://localhost:5000/api/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminUserService {
-  ADMIN_USER_UPDATE_URL = 'http://localhost:5000/api/users/update';
-  ADMIN_USER_DELETE_URL = 'http://localhost:5000/api/admins/delete';
+  ADMIN_USER_UPDATE_URL = 'http://localhost:5000/api/users/update/';
+  ADMIN_USER_DELETE_URL = 'http://localhost:5000/api/admins/delete/';
 
   [x: string]: any;
   constructor(private http: HttpClient, private toastrService: ToastrService) {}

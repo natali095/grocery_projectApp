@@ -14,6 +14,9 @@ export const ADMIN_USERS_URL = BASE_URL + '/api/admins';
 export const ADMIN_USER_UPDATE_URL = ADMIN_USERS_URL + '/update/';
 export const ADMIN_USER_DELETE_URL = ADMIN_USERS_URL + '/delete/';
 
+export const ADMIN_FOOD_URL = BASE_URL + '/api/foods';
+export const ADMIN_FOOD_DELETE_URL = ADMIN_FOOD_URL + '/delete/';
+export const ADMIN_FOOD_UPDATE_URL = ADMIN_FOOD_URL + '/update/';
 
 
 export const ORDERS_URL = BASE_URL + '/api/orders';

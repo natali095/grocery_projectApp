@@ -65,4 +65,8 @@
     margin-right: 4px;
     margin-top: 1rem;
   }
-  
+  .food-image {
+    max-width: 150px; /* Change these values to what suits you */
+    max-height: 150px;
+    object-fit: contain; /* Keeps aspect ratio */
+}
