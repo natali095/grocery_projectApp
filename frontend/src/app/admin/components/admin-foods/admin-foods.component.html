@@ -42,6 +42,50 @@
         </tr>
       </tbody>
     </table>
+
+
+
+    <div *ngIf="editingFood">
+        <h2>Edit Food</h2>
+        <form (submit)="saveFoodChanges(); $event.preventDefault()">
+          <mat-form-field>
+            <mat-label>Name:</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="editingFood.name" required>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Price:</mat-label>
+            <input matInput type="number" name="price" [(ngModel)]="editingFood.price" required>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>CookTime:</mat-label>
+            <input matInput type="text" name="CookTime" [(ngModel)]="editingFood.cookTime">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Origins:</mat-label>
+            <input matInput type="text" name="origins" [(ngModel)]="editingFood.origins">
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>ImageUrl:</mat-label>
+            <input matInput type="text" name="imageUrl" [(ngModel)]="editingFood.imageUrl">
+          </mat-form-field>
+
+   
+          <mat-form-field>
+            <mat-label>Tags:</mat-label>
+            <input matInput type="text" name="tags" [(ngModel)]="editingFood.tags">
+          </mat-form-field>
+
+
+          <button mat-raised-button color="primary" type="submit">Save Changes</button>
+
+          <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+
   </div>
   
 

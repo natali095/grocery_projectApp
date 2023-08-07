@@ -11,7 +11,18 @@ import { MatFormFieldModule } from '@angular/material/form-field'; // Import the
 })
 export class AdminFoodsComponent implements OnInit {
   foods: Food[] = [];
-  newFood: Food = new Food();
+  newFood: Food = {
+    id: 'default',
+    name: '',
+    price: 0,
+    tags: [], // use an empty array
+    favorite: false, // use a boolean
+    stars: 0, // use a number
+    imageUrl: '', 
+    origins: [], // use an empty array
+    cookTime: '',
+  };
+  editingFood: Food | null = null;
 
   constructor(private foodService: AdminFoodService) {}
 
@@ -45,40 +56,53 @@ export class AdminFoodsComponent implements OnInit {
       }
     );
   }
-
-  editFood(food: Food): void {
-    // Implement the logic to edit the food
+  editFood(food: Food) {
+    if (food) {
+      this.editingFood = { ...food };
+    } else {
+      this.editingFood = null;
+    }
   }
+  saveFoodChanges() { // Rename this method
+    if (this.editingFood) {
+        this.foodService.updateFood(this.editingFood).subscribe(
+            () => {
+                const index = this.foods.findIndex((food) => food._id === this.editingFood?._id);
+                if (index !== -1) {
+                    if (this.editingFood && this.editingFood.id) {
+                        this.foods[index] = { ...this.editingFood };
+                    }
+                }
+            },
+            (error: any) => {
+                console.error('Error updating food:', error);
+            }
+        );
+    }
+}
+  
 
-  saveFoodChanges(): void {
-    // Implement the logic to save changes to the edited food
-  }
+
 
   cancelEdit(): void {
     // Implement the logic to cancel the editing of a food
   }
 
-  deleteFood(food: Food): void {
-    this.foodService.deleteFood(food._id).subscribe(
-      () => {
-        this.foods = this.foods.filter((f) => f._id !== food._id);
-      },
-      (error: any) => {
-        console.error('Error deleting food:', error);
-      }
-    );
 
-  // deleteFood(food: { _id: any; }) {
-  //   this.foodService.deleteFood(food._id).subscribe(
-  //     () => {
-  //       this.foods = this.foods.filter((u) => u._id !== food._id);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error deleting user:', error);
-  //     }
-  //   );
-  }
-  }
+  deleteFood(food: Food): void {
+    this.foodService.deleteFood(food._id).subscribe( // Assuming you have a deleteFood method in your service
+        () => {
+            const index = this.foods.findIndex(f => f._id === food._id);
+            if (index !== -1) {
+                this.foods.splice(index, 1);
+            }
+        },
+        (error: any) => {
+            console.error('Error deleting food:', error);
+        }
+    );
+} 
+}
 
   
 

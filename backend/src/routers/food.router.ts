@@ -84,6 +84,13 @@ router.put('/update/:id', asyncHandler(async (req, res, next) => {
     return;
 }));
 
+router.post('/', asyncHandler(async (req: Request, res: Response) => {
+    const foodItem = new FoodModel(req.body);
+    await foodItem.save();
+    res.status(201).json(foodItem);
+}));
+
+
 // router.delete('/delete/:id', asyncHandler(async (req, res, next) => {
 //     const food = await FoodModel.findByIdAndDelete(req.params.id);
 //     if (!food) {
