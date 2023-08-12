@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:5000';
+// 
+const BASE_URL = 'http://ec2-54-237-219-219.compute-1.amazonaws.com:5000';
+
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_TAGS_URL = FOODS_URL + '/tags';

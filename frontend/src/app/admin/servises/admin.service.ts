@@ -6,8 +6,7 @@ import { IAdminLogin } from '../shared/interfaces/iAdminLogin';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ADMIN_LOGIN_URL } from 'src/app/user/shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router'; // Import Router service
-
+import { Router } from '@angular/router'; 
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +17,7 @@ export class AdminService {
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
-    private router: Router // Inject Router service
+    private router: Router
   ) {
     this.adminObservable = this.adminSubject.asObservable();
   }
