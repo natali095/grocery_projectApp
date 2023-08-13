@@ -12,7 +12,7 @@ import { User } from '../../shared/models/User';
 export class AdminUsersComponent implements OnInit {
   users: User[] = []; 
   newUser: User = {
-    id: '', 
+    _id: '', 
     email: '',
     name: '',
     address: '',
@@ -35,10 +35,10 @@ export class AdminUsersComponent implements OnInit {
     }
   }
   
-
   saveUserChanges() {
     if(this.editingUser) {
       this.userService.updateUser(this.editingUser).subscribe(
+
         () => {
           const index = this.users.findIndex((user) => user._id === this.editingUser?._id);
           this.users[index] = { ...this.editingUser };
@@ -50,7 +50,7 @@ export class AdminUsersComponent implements OnInit {
       );
     }
   }
-
+  
   cancelEdit() {
     this.editingUser = null;
   }

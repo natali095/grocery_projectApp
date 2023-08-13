@@ -55,22 +55,31 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }));
 
 router.post('/', asyncHandler(async (req, res, next) => {
+  console.log("Received user data:", req.body);
+  delete req.body._id;
   const user = new UserModel(req.body);
   await user.save();
+  console.log("Saved user data:", user);
   res.send(user);
   return;
 }));
 
 
-router.put('/update/:id', asyncHandler(async (req, res, next) => {
-  const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  if (!user) {
-    res.status(HTTP_BAD_REQUEST).send("No user with that ID found");
-    return;
-  }
-  res.send(user);
-  return;
-}));
+
+// router.put('/update/:id', asyncHandler(async (req, res, next) => {
+//   console.log("Inside /update/:id route with ID:", req.params.id);
+
+//   const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+//   if (!user) {
+//     res.status(HTTP_BAD_REQUEST).send("No user with that ID found");
+//     return;
+//   }
+//   res.send(user);
+//   return;
+// }));
+
+
+
 
 router.delete('/delete/:id', asyncHandler(async (req, res, next) => {
   const user = await UserModel.findByIdAndDelete(req.params.id);

@@ -1,6 +1,4 @@
-// 
-const BASE_URL = 'http://ec2-54-237-219-219.compute-1.amazonaws.com:5000';
-
+const BASE_URL = 'http://localhost:5000';
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_TAGS_URL = FOODS_URL + '/tags';
@@ -13,8 +11,8 @@ export const USER_REGISTER_URL = BASE_URL + '/api/users/register';
 
 export const ADMIN_LOGIN_URL = BASE_URL + '/api/admins/login';
 export const ADMIN_USERS_URL = BASE_URL + '/api/admins';
-export const ADMIN_USER_UPDATE_URL = ADMIN_USERS_URL + '/update/';
-export const ADMIN_USER_DELETE_URL = ADMIN_USERS_URL + '/delete/';
+export const ADMIN_USER_UPDATE_URL = ADMIN_USERS_URL + '/update';
+export const ADMIN_USER_DELETE_URL = ADMIN_USERS_URL + '/delete';
 
 export const ADMIN_FOOD_URL = BASE_URL + '/api/foods';
 export const ADMIN_FOOD_DELETE_URL = ADMIN_FOOD_URL + '/delete/';

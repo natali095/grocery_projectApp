@@ -7,12 +7,13 @@ import { ADMIN_USERS_URL, ADMIN_USER_DELETE_URL } from '../../user/shared/consta
 
 const USER_GET_URL = 'http://localhost:5000/api/users';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminUserService {
-  ADMIN_USER_UPDATE_URL = 'http://localhost:5000/api/users/update/';
-  ADMIN_USER_DELETE_URL = 'http://localhost:5000/api/admins/delete/';
+  ADMIN_USER_UPDATE_URL = 'http://localhost:5000/api/users/update';
+  ADMIN_USER_DELETE_URL = 'http://localhost:5000/api/admins/delete';
 
   [x: string]: any;
   constructor(private http: HttpClient, private toastrService: ToastrService) {}
@@ -32,7 +33,7 @@ export class AdminUserService {
   updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.ADMIN_USER_UPDATE_URL}/${user._id}`, user);
   }
-
+  
   deleteUser(userId: string): Observable<{}> {
     return this.http.delete(`${this.ADMIN_USER_DELETE_URL}/${userId}`);
   }

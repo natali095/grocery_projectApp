@@ -39,8 +39,18 @@ export class AdminFoodService {
   }
 
   addFood(food: Food): Observable<Food> {
+    if (food.id === 'temp-id') {
+      delete food.id;
+    }
+  
     return this.http.post<Food>(FOODS_URL, food);
   }
+
+
+
+
+
+
 
   editFood(food: Food): Observable<Food> {
     return this.http.put<Food>(`${FOODS_URL}/update/${food._id}`, food);

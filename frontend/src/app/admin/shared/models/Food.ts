@@ -1,7 +1,7 @@
 
 export class Food {
     [x: string]: any;
-    id!: string;
+    id?: string;
     name!: string;
     price!: number;
     tags?: string[];

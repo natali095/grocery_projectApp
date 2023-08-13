@@ -1,12 +1,12 @@
 import {Schema, model} from 'mongoose';
 
-export interface User{
-    id:string;
-    email:string;
+export interface User {
+    _id?: string; // This makes _id optional.
+    email: string;
     password: string;
-    name:string;
-    address:string;
-    isAdmin:boolean;
+    name: string;
+    address: string;
+    isAdmin: boolean;
 }
 
 
@@ -31,19 +31,3 @@ export const UserSchema = new Schema<User>({
 
 export const UserModel = model<User>('user', UserSchema);
 
-// const newAdminUser = new UserModel({
-//     name: 'Alina',
-//     email: 'alina@gmail.com',
-//     password: 'admin0123',
-//     address: '500 Admin St',
-//     isAdmin: true
-//   });
-  
-//   newAdminUser.save()
-//     .then(savedUser => {
-//       console.log('Admin user saved:', savedUser);
-//     })
-//     .catch(error => {
-//       console.error('Error saving admin user:', error);
-//     });
-  

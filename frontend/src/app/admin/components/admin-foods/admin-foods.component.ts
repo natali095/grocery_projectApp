@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminFoodService } from '../../servises/adfmin.food.service';
-import { Food } from '../../../user/shared/models/Food'; // Replace 'path-to-food-model' with the actual path to your food model
+import { Food } from '../../shared/models/Food'; // Replace 'path-to-food-model' with the actual path to your food model
 import { MatInputModule } from '@angular/material/input'; // Import the MatInputModule
 import { MatButtonModule } from '@angular/material/button'; // Import the MatButtonModule
 import { MatFormFieldModule } from '@angular/material/form-field'; // Import the MatFormFieldModule
@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'; // Import the
 export class AdminFoodsComponent implements OnInit {
   foods: Food[] = [];
   newFood: Food = {
-    id: 'default',
+    id: 'temp-id',
     name: '',
     price: 0,
     tags: [], // use an empty array
@@ -58,7 +58,7 @@ export class AdminFoodsComponent implements OnInit {
   }
   editFood(food: Food) {
     if (food) {
-      this.editingFood = { ...food };
+      this.editingFood = { ...food } as Food;
     } else {
       this.editingFood = null;
     }
@@ -72,6 +72,7 @@ export class AdminFoodsComponent implements OnInit {
                     if (this.editingFood && this.editingFood.id) {
                         this.foods[index] = { ...this.editingFood };
                     }
+                    this.editingFood = null;
                 }
             },
             (error: any) => {

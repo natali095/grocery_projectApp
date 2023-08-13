@@ -18,6 +18,19 @@ router.get('/seed', asyncHandler(async (req, res) => {
   res.send('Seed Is Done!');
 }));
 
+
+router.put('/update/:id', asyncHandler(async (req, res, next) => {
+  console.log("Inside /update/:id route with ID:", req.params.id);
+
+  const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  if (!user) {
+    res.status(HTTP_BAD_REQUEST).send("No user with that ID found");
+    return;
+  }
+  res.send(user);
+  return;
+}));
+
 router.post('/login', asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await UserModel.findOne({ email });
@@ -38,15 +51,15 @@ router.post('/register', asyncHandler(async (req, res) => {
   }
 
   const encryptedPassword = await bcrypt.hash(password, 10);
-
+  
+  
   const newUser: User = {
-    id: '',
     name,
     email: email.toLowerCase(),
     password: encryptedPassword,
     address,
     isAdmin: false
-  };
+};
 
   const dbUser = await UserModel.create(newUser);
   res.send(generateTokenResponse(dbUser));
@@ -54,7 +67,7 @@ router.post('/register', asyncHandler(async (req, res) => {
 
 const generateTokenResponse = (user: User) => {
   const token = jwt.sign(
-    { id: user.id,
+    { id: user._id,
       email: user.email,
       isAdmin: user.isAdmin
     },
@@ -65,7 +78,7 @@ const generateTokenResponse = (user: User) => {
   );
 
   return {
-    id: user.id,
+    id: user._id,
     email: user.email,
     name: user.name,
     address: user.address,
